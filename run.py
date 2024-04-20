@@ -100,6 +100,7 @@ pipeline = DiffusionPipeline.from_pretrained(
     "sudo-ai/zero123plus-v1.2", 
     custom_pipeline="zero123plus",
     torch_dtype=torch.float16,
+    cache_dir="/scratch2/yuxili/interiorDesign/huggingface"
 )
 pipeline.scheduler = EulerAncestralDiscreteScheduler.from_config(
     pipeline.scheduler.config, timestep_spacing='trailing'
@@ -131,7 +132,10 @@ model = model.to(device)
 if IS_FLEXICUBES:
     model.init_flexicubes_geometry(device, fovy=30.0)
 model = model.eval()
-
+# Check if the directory exists
+if not os.path.exists(args.output_path):
+    # Create the directory
+    os.makedirs(args.output_path)
 # make output directories
 image_path = os.path.join(args.output_path, config_name, 'images')
 mesh_path = os.path.join(args.output_path, config_name, 'meshes')
@@ -160,6 +164,7 @@ rembg_session = None if args.no_rembg else rembg.new_session()
 
 outputs = []
 for idx, image_file in enumerate(input_files):
+    image_file = image_file
     name = os.path.basename(image_file).split('.')[0]
     print(f'[{idx+1}/{len(input_files)}] Imagining {name} ...')
 

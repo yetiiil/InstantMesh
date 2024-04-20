@@ -13,7 +13,7 @@
 
 ---
 
-This repo is the official implementation of InstantMesh, a feed-forward framework for efficient 3D mesh generation from a single image based on the LRM/Instant3D architecture.
+This repo is the official implementation of InstantMesh, a feed-forward framework for efficient 3D mesh generation from a single image based on the LRM architecture.
 
 https://github.com/TencentARC/InstantMesh/assets/20635237/dab3511e-e7c6-4c0b-bab7-15772045c47d
 
@@ -22,33 +22,21 @@ https://github.com/TencentARC/InstantMesh/assets/20635237/dab3511e-e7c6-4c0b-bab
 - [x] Release inference and training code.
 - [x] Release model weights.
 - [x] Release huggingface gradio demo. Please try it at [demo](https://huggingface.co/spaces/TencentARC/InstantMesh) link.
-- [ ] Add support to low-memory GPU environment.
+- [ ] Add support to low-momery GPU environment.
 - [ ] Add support to more multi-view diffusion models.
 
 # ⚙️ Dependencies and Installation
 
-We recommend using `Python>=3.10`, `PyTorch>=2.1.0`, and `CUDA>=12.1`.
+We recommend using `Python>=3.10`, `PyTorch>=2.1.0`, and `CUDA=12.1`.
 ```bash
 conda create --name instantmesh python=3.10
 conda activate instantmesh
 pip install -U pip
 
-# Ensure Ninja is installed
-conda install Ninja
-
-# Install the correct version of CUDA
-conda install cuda -c nvidia/label/cuda-12.1.0
-
 # Install PyTorch and xformers
 # You may need to install another xformers version if you use a different PyTorch version
 pip install torch==2.1.0 torchvision==0.16.0 torchaudio==2.1.0 --index-url https://download.pytorch.org/whl/cu121
 pip install xformers==0.0.22.post7
-
-# For Linux users: Install Triton 
-pip install triton
-
-# For Windows users: Use the prebuilt version of Triton provided here:
-pip install https://huggingface.co/r4ziel/xformers_pre_built/resolve/main/triton-2.0.0-cp310-cp310-win_amd64.whl
 
 # Install other requirements
 pip install -r requirements.txt
@@ -129,5 +117,5 @@ We thank the authors of the following projects for their excellent contributions
 - [FlexiCubes](https://github.com/nv-tlabs/FlexiCubes)
 - [Instant3D](https://instant-3d.github.io/)
 
-Thank [@camenduru](https://github.com/camenduru) for implementing [Replicate Demo](https://replicate.com/camenduru/instantmesh) and [Colab Demo](https://colab.research.google.com/github/camenduru/InstantMesh-jupyter/blob/main/InstantMesh_jupyter.ipynb)!  
-Thank [@jtydhr88](https://github.com/jtydhr88) for implementing [ComfyUI support](https://github.com/jtydhr88/ComfyUI-InstantMesh)!
+Thank [camenduru](https://github.com/camenduru) for implementing [Replicate Demo](https://replicate.com/camenduru/instantmesh) and [Colab Demo](https://colab.research.google.com/github/camenduru/InstantMesh-jupyter/blob/main/InstantMesh_jupyter.ipynb)!  
+Thank [jtydhr88](https://github.com/jtydhr88) for implementing [ComfyUI support](https://github.com/jtydhr88/ComfyUI-InstantMesh)!
